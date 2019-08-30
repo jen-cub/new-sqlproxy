@@ -23,6 +23,7 @@ lint:
 init:
 	helm init --client-only
 	helm repo update
+	helm list
 
 dev: lint init
 ifndef CI
