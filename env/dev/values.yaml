@@ -11,7 +11,7 @@ cloudsql:
   instances:
     # GCP instance name.
     - instance: "pg-sqlproxy"
-      # Optional abbreviation used to override the truncated instance name if the
+      # Optional abbreviation used to override the truncated instance name
       # 15 character instance name prefix is not unique for use as a port
       # identifier.
       instanceShortName: ""
