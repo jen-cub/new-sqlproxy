@@ -6,7 +6,7 @@ cloudsql:
   ## PostgreSQL/MySQL instances:
   ## update with your GCP project, the region of your Cloud SQL instance
   ## and the name of your Cloud SQL instance
-  ## PostgreSQL port 5432 or MySQL port 3306, or other port you set for your SQL instance.
+  ## PostgreSQL port 5432 or MySQL port 3306.
   ## Use different ports for different instances.
   instances:
     # GCP instance name.
