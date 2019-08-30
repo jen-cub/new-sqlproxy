@@ -1,3 +1,4 @@
+---
 ## Google Cloud SQL Proxy image
 image: b.gcr.io/cloudsql-docker/gce-proxy
 imageTag: "1.11"
