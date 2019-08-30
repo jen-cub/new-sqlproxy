@@ -10,7 +10,7 @@ cloudsql:
   ## Use different ports for different instances.
   instances:
     # GCP instance name.
-    - instance: "pg-sqlproxy"
+    - instance: "p4-develop-k8s"
       # Optional abbreviation used to override the truncated instance
       # 15 character instance name prefix is not unique for use as a port
       # identifier.
