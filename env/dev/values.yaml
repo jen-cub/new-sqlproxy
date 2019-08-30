@@ -16,9 +16,9 @@ cloudsql:
       # identifier.
       instanceShortName: ""
       # GCP project where the instance exists.
-      project: "$(DEV_PROJECT)"
+      project: "jendevops1"
       # GCP region where the instance exists.
-      region: "$(DEV_ZONE)"
+      region: "australia-southeast1-c"
       # Port number for the proxy to expose for this instance.
       port: 3306
 
