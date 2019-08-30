@@ -20,7 +20,7 @@ cloudsql:
       # GCP region where the instance exists.
       region: "$(DEV_ZONE)"
       # Port number for the proxy to expose for this instance.
-      port: 5432
+      port: 3306
 
 
   ## Configure resource requests and limits
