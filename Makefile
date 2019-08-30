@@ -23,7 +23,6 @@ lint:
 init:
 	helm init --client-only
 	helm repo update
-	helm list
 
 dev: lint init
 ifndef CI
@@ -32,6 +31,7 @@ endif
 	gcloud config set project $(DEV_PROJECT)
 	gcloud container clusters get-credentials $(DEV_CLUSTER) --zone $(DEV_ZONE) --project $(DEV_PROJECT)
 	-kubectl create namespace $(NAMESPACE)
+	helm list
 	helm upgrade --install --force --wait $(RELEASE) \
 		--namespace=$(NAMESPACE) \
 		--version $(CHART_VERSION) \
