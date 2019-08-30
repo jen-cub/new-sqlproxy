@@ -28,7 +28,7 @@ jobs:
           name: Setup Google Cloud SDK
           command: |
               echo $GCLOUD_SERVICE_KEY > /home/circleci/gcloud-service-key.json
-      - run: activate-gcloud-account.sh
+              gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
       - deploy:
           name: Deploy to development cluster
           command: make dev | tee /tmp/deploy.log
