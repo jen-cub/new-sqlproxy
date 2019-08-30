@@ -1,18 +1,18 @@
 # SHELL := /bin/bash
 
-RELEASE := nginx-ingress
-NAMESPACE := nginx-ingress
+RELEASE := sqlproxy
+NAMESPACE := sqlproxy
 
-CHART_NAME := stable/nginx-ingress
-CHART_VERSION ?= 1.17.1
+CHART_NAME := rimusz/gcloud-sqlproxy
+CHART_VERSION ?= 0.14.1
 
 DEV_CLUSTER ?= p4-development
-DEV_PROJECT ?= planet-4-151612
-DEV_ZONE ?= us-central1-a
+DEV_PROJECT ?= jendevops1
+DEV_ZONE ?= australia-southeast1-c
 
-PROD_CLUSTER ?= planet4-production
-PROD_PROJECT ?= planet4-production
-PROD_ZONE ?= us-central1-a
+#PROD_CLUSTER ?= planet4-production
+#PROD_PROJECT ?= planet4-production
+#PROD_ZONE ?= us-central1-a
 
 .DEFAULT_TARGET: status
 

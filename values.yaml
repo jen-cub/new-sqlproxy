@@ -1,8 +1,28 @@
----
-controller:
-  autoscaling:
-    enabled: true
-    minReplicas: 3
-    maxReplicas: 5
+## Google Cloud SQL Proxy image
+image: b.gcr.io/cloudsql-docker/gce-proxy
+imageTag: "1.11"
+
+## Specify a imagePullPolicy
+## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
+## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+##
+imagePullPolicy: IfNotPresent
+
+## Replicas Set count
+replicasCount: 1
+
+## Set the GCP service account key JSON file.
+## Service account has access be set to Cloud SQL instances
+## the key must be encoded with base64
+## e.g. `cat service-account.json | base64`
+## only used if no existing secret is specified
+##
+serviceAccountKey: ""
+
+## Specify an existing secret holding the cloud-sql service account credentials
+existingSecret: "pg-sqlproxy-gcloud-sqlproxy"
+## The key in the existing secret that stores the credenials
+existingSecretKey: ""
+
 rbac:
-  create: true
+  create: false
