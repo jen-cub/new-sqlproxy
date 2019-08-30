@@ -46,6 +46,8 @@ endif
 	gcloud config set project $(PROD_PROJECT)
 	gcloud container clusters get-credentials $(PROD_PROJECT) --zone $(PROD_ZONE) --project $(PROD_PROJECT)
 	-kubectl create namespace $(NAMESPACE)
+	helm repo add rimusz https://charts.rimusz.net
+  helm install -n pg-sqlproxy rimusz/gcloud-sqlproxy --version 0.14.1 --namespace sqlproxy
 	helm upgrade --install --force --wait $(RELEASE) \
 		--namespace=$(NAMESPACE) \
 		--version $(CHART_VERSION) \
