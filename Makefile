@@ -22,9 +22,9 @@ init:
 	helm repo update
 
 dev: lint init
-#ifndef CI
-#	$(error Please commit and push, this is intended to be run in a CI environment)
-#endif
+ifndef CI
+	$(error Please commit and push, this is intended to be run in a CI environment)
+endif
 	gcloud config set project $(DEV_PROJECT)
 	gcloud container clusters get-credentials $(DEV_CLUSTER) --zone $(DEV_ZONE) --project $(DEV_PROJECT)
 	-kubectl create namespace $(NAMESPACE)
