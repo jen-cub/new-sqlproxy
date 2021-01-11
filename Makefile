@@ -4,15 +4,11 @@ RELEASE := sqlproxy
 NAMESPACE := sqlproxy
 
 CHART_NAME := rimusz/gcloud-sqlproxy
-CHART_VERSION ?= 0.14.1
+CHART_VERSION ?= 0.19.12
 
-DEV_CLUSTER ?= p4-development
+DEV_CLUSTER ?= testrc
 DEV_PROJECT ?= jendevops1
 DEV_ZONE ?= australia-southeast1-c
-
-#PROD_CLUSTER ?= planet4-production
-#PROD_PROJECT ?= planet4-production
-#PROD_ZONE ?= us-central1-a
 
 .DEFAULT_TARGET: status
 
@@ -26,15 +22,16 @@ init:
 	helm repo update
 
 dev: lint init
-ifndef CI
-	$(error Please commit and push, this is intended to be run in a CI environment)
-endif
+#ifndef CI
+#	$(error Please commit and push, this is intended to be run in a CI environment)
+#endif
 	gcloud config set project $(DEV_PROJECT)
 	gcloud container clusters get-credentials $(DEV_CLUSTER) --zone $(DEV_ZONE) --project $(DEV_PROJECT)
 	-kubectl create namespace $(NAMESPACE)
 	helm upgrade --install --force --wait $(RELEASE) \
 		--namespace=$(NAMESPACE) \
 		--version $(CHART_VERSION) \
+		--set serviceAccountKey=$(CLOUD_SERVICE_KEY) \
 		-f values.yaml \
 		-f env/dev/values.yaml \
 		$(CHART_NAME)

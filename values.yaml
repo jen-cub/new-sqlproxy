@@ -1,14 +1,4 @@
 ---
-## Google Cloud SQL Proxy image
-image: b.gcr.io/cloudsql-docker/gce-proxy
-imageTag: "1.11"
-
-## Specify a imagePullPolicy
-## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
-## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
-##
-imagePullPolicy: IfNotPresent
-
 ## Replicas Set count
 replicasCount: 1
 
@@ -21,7 +11,6 @@ replicasCount: 1
 serviceAccountKey: ""
 
 ## Specify an existing secret holding the cloud-sql service account credentials
-existingSecret: "pg-sqlproxy-gcloud-sqlproxy"
 ## The key in the existing secret that stores the credenials
 existingSecretKey: ""
 
